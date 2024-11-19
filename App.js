@@ -1,20 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, FlatList, Platform } from 'react-native';
+import recipes from './assets/data/dummy.json';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import RecipeCard from './components/RecipeCard';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <SafeAreaView style={styles.mainContainer}>
+        <FlatList
+          contentContainerStyle={{gap:5}}
+          data={recipes}
+          keyExtractor={(item) => item.name}
+          renderItem={ ({item}) => <RecipeCard item={item} /> }
+        />      
+        <StatusBar style="auto" />
+      </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: 'grey',
     justifyContent: 'center',
-  },
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+  }
 });
