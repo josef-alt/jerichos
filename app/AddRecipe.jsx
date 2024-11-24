@@ -9,9 +9,9 @@ export default function AddRecipe() {
     insert("value 2");
     getAll();
 
-  return (
-    <View>
-        <Text>add new</Text>
-    </View>
-  )
+    return (
+        <View>
+            <Text>add new</Text>
+        </View>
+    )
 }

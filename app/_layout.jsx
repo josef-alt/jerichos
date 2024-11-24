@@ -9,26 +9,26 @@ export default function Layout () {
         init();
     }, []);
 
-  return (
-    <Tabs>
-        <Tabs.Screen
-            name="AddRecipe"
-            options={{
-                title: "New"
-            }}
-        />
-        <Tabs.Screen
-            name="index"
-            options={{
-                title: "Home"
-            }}
-        />
-        <Tabs.Screen
-            name="Favorites"
-            options={{
-                title: "Faves"
-            }}
-        />
-    </Tabs>
-  )
+    return (
+        <Tabs>
+            <Tabs.Screen
+                name="AddRecipe"
+                options={{
+                    title: "New"
+                }}
+            />
+            <Tabs.Screen
+                name="index"
+                options={{
+                    title: "Home"
+                }}
+            />
+            <Tabs.Screen
+                name="Favorites"
+                options={{
+                    title: "Faves"
+                }}
+            />
+        </Tabs>
+    )
 }

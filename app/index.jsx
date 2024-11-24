@@ -10,17 +10,17 @@ export default function Home() {
     // test database retrieval
     getAll();
 
-  return (
-      <SafeAreaView style={styles.mainContainer}>
-        <FlatList
-          contentContainerStyle={{gap:5}}
-          data={recipes}
-          keyExtractor={(item) => item.name}
-          renderItem={ ({item}) => <RecipeCard item={item} /> }
-        />
-        <StatusBar style="auto" />
-      </SafeAreaView>
-  );
+    return (
+        <SafeAreaView style={styles.mainContainer}>
+            <FlatList
+                contentContainerStyle={{gap:5}}
+                data={recipes}
+                keyExtractor={(item) => item.name}
+                renderItem={ ({item}) => <RecipeCard item={item} /> }
+            />
+            <StatusBar style="auto" />
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
