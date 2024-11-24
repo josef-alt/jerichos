@@ -3,8 +3,13 @@ import { StyleSheet, FlatList, Platform } from 'react-native';
 import recipes from '../assets/data/dummy.json';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RecipeCard from '../components/RecipeCard';
+import { getAll } from './data/db';
+
 
 export default function Home() {
+    // test database retrieval
+    getAll();
+
   return (
       <SafeAreaView style={styles.mainContainer}>
         <FlatList
