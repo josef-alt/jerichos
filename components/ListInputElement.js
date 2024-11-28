@@ -3,10 +3,9 @@ import { Text, View, StyleSheet } from 'react-native';
 
 // title should be displayed at the top of the element
 // placeholder should be the 'hint' inside the text box
-export default function ListInputElement({ title, placeholder }) {
+export default function ListInputElement({ title, placeholder, list, setList }) {
     // maintaining user-added elements
     const [newItem, setItem] = useState('');
-    const [list, setList] = useState([]);
 
     function addItem() {
         setList([...list, newItem]);
