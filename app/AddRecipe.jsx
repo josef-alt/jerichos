@@ -1,16 +1,12 @@
 import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native'
 import { React, useState } from 'react'
 import { getAll, insert } from './data/db'
+import ListInputElement from '../components/ListInputElement';
 
 export default function AddRecipe() {
     const [recipe, setRecipe] = useState({
         ingredients: []
     });
-    const [ingredient, setIngredient] = useState('');
-
-    function addIngredient() {
-        setRecipe({...recipe, ingredients: [...recipe.ingredients, ingredient]});
-    }
 
     return (
         <View style={{marginHorizontal: 5}}>
@@ -27,30 +23,16 @@ export default function AddRecipe() {
                 placeholder='Category'
             />
 
-            <View style={styles.ingredientsContainer}>
-                <Text>Raw Ingredients List</Text>
-                <View style={styles.ingredientInput}>
-                    <TextInput
-                        style={{
-                            borderWidth: 1,
-                            flexGrow: 1
-                        }}
-                        value={ingredient}
-                        placeholder="Ingredient Name"
-                        onChangeText={setIngredient}
-                    />
-                    <Button
-                        title="+" onPress={addIngredient}
-                    />
-                </View>
-                <View>
-                    {recipe.ingredients.map((ingr, index) => (
-                        <Text key={index}>
-                            {ingr}
-                        </Text>
-                    ))}
-                </View>
-            </View>
+            <ListInputElement
+                list={recipe.ingredients}
+                setList={
+                    (updatedList) => {
+                        setRecipe({...recipe, ingredients: updatedList});
+                    }
+                }
+                placeholder='New Ingredient'
+                title='Add Ingredients'
+            />
 
             <Button onPress={() => Alert.alert(`New Recipe ${recipe.name}`)} title="Create" />
         </View>
