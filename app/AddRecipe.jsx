@@ -1,6 +1,5 @@
 import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native'
 import { React, useState } from 'react'
-import { getAll, insert } from './data/db'
 import ListInputElement from '../components/ListInputElement';
 
 export default function AddRecipe() {
