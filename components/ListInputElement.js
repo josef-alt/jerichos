@@ -13,9 +13,9 @@ export default function ListInputElement({ title, placeholder, list, setList }) 
     }
 
     return (
-        <View style={styles.inputContainer}>
+        <View style={styles.elementContainer}>
             <Text>{title}</Text>
-            <View style={styles.listContainer}>
+            <View style={styles.inputContainer}>
                 <TextInput
                     style={{
                         borderWidth: 1,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         gap: 5,
         justifyContent: 'space-between'        
     },
-    listContainer: {
+    elementContainer: {
         marginBottom: 20
     }
 });
