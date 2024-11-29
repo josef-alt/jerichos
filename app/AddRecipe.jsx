@@ -56,13 +56,5 @@ const styles = StyleSheet.create({
       marginBottom: 42,
       borderWidth: 1,
       padding: 10
-    },
-    ingredientInput: {
-        flexDirection: 'row',
-        gap: 5,
-        justifyContent: 'space-between'        
-    },
-    ingredientsContainer: {
-        marginBottom: 20
     }
   });
