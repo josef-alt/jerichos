@@ -5,7 +5,8 @@ import ListInputElement from '../components/ListInputElement';
 
 export default function AddRecipe() {
     const [recipe, setRecipe] = useState({
-        ingredients: []
+        ingredients: [],
+        steps: []
     });
 
     return (
@@ -32,6 +33,17 @@ export default function AddRecipe() {
                 }
                 placeholder='New Ingredient'
                 title='Add Ingredients'
+            />
+
+            <ListInputElement
+                list={recipe.steps}
+                setList={
+                    (updatedList) => {
+                        setRecipe({...recipe, steps: updatedList});
+                    }
+                }
+                placeholder='Next Step'
+                title='Create Instructions'
             />
 
             <Button onPress={() => Alert.alert(`New Recipe ${recipe.name}`)} title="Create" />
