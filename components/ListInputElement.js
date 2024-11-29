@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, TextInput, Button, View, StyleSheet } from 'react-native';
 
 // title should be displayed at the top of the element
 // placeholder should be the 'hint' inside the text box
