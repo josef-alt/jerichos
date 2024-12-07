@@ -15,14 +15,15 @@ const init = () => {
     });
 };
 
-// get all
+// get name and category for each recipe for main display
 const getAll = () => {
     db.withTransactionSync((task) => {
         let all = db.getAllSync(
-            'SELECT * FROM dummy;'
+            'SELECT recipe.name as recipeName, category.name as categoryName FROM recipe JOIN category ON recipe.category_id = category.id;'
         );
-        console.log(all);
+        return all;
     });
+    return [];
 };
 
 // insert single
