@@ -1,6 +1,7 @@
 import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native'
 import { React, useState } from 'react'
 import ListInputElement from '../components/ListInputElement';
+import { insert } from './data/db';
 
 export default function AddRecipe() {
     const [recipe, setRecipe] = useState({
@@ -45,7 +46,15 @@ export default function AddRecipe() {
                 title='Create Instructions'
             />
 
-            <Button onPress={() => Alert.alert(`New Recipe ${recipe.name}`)} title="Create" />
+            <Button
+                title="Create"
+                onPress={
+                    () => {
+                        Alert.alert(`New Recipe ${recipe.name}`);
+                        insert(recipe);
+                    }
+                }
+            />
         </View>
     )
 }
