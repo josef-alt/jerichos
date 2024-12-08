@@ -26,13 +26,41 @@ const getAll = () => {
     return [];
 };
 
-// insert single
-const insert = (entry) => {
-    console.log("inserting ", entry);
+// prepared statements used for recipe creation
+const insertCategory = db.prepareSync('INSERT INTO category (name) VALUES (?);');
+const insertRecipe = db.prepareSync('INSERT INTO recipe (category_id, name) VALUES (?, ?);');
+const insertIngredient = db.prepareSync('INSERT INTO ingredients (recipe_id, name) VALUES (?, ?)');
+const insertStep = db.prepareSync('INSERT INTO steps (recipe_id, step_number, description) VALUES (?, ?, ?)');
+
+// insert single new recipe
+const insert = (recipe) => {
+    console.log('\ninserting\n', recipe.name, '\n', recipe.category, '\n', recipe.ingredients, '\n', recipe.steps);
     db.withTransactionSync((task) => {
-        db.runSync(
-            'INSERT INTO dummy (title) VALUES (?);', entry
+        // check for existing category
+        const found = db.getFirstSync(
+            'SELECT id FROM category WHERE name = ?;',
+            [recipe.category]
         );
+
+        // insert new category if needed and determine id
+        let cat_id = null;
+        if(found) {
+            cat_id = found.id;
+        } else {
+            cat_id = insertCategory.executeSync(recipe.category).lastInsertRowId;
+        }
+
+        // create recipe and get id
+        const recipeId = insertRecipe.executeSync(cat_id, recipe.name).lastInsertRowId;
+
+        // add steps and ingredients using recipe id
+        for(const ingredient of recipe.ingredients) {
+            console.log(insertIngredient.executeSync(recipeId, ingredient));
+        }
+
+        for(let step = 1, stepCount = recipe.steps.length; step <= stepCount; ++step) {
+            console.log(insertStep.executeSync(recipeId, step, recipe.steps[step - 1]));
+        }
     });
 };
 
