@@ -17,13 +17,9 @@ const init = () => {
 
 // get name and category for each recipe for main display
 const getAll = () => {
-    db.withTransactionSync((task) => {
-        let all = db.getAllSync(
-            'SELECT recipe.name as recipeName, category.name as categoryName FROM recipe JOIN category ON recipe.category_id = category.id;'
-        );
-        return all;
-    });
-    return [];
+    return db.getAllSync(
+        'SELECT recipe.name as recipeName, category.name as categoryName FROM recipe JOIN category ON recipe.category_id = category.id;'
+    );
 };
 
 // prepared statements used for recipe creation
