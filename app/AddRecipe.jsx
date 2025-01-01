@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native'
+import { TextInput, StyleSheet, Button, Alert, ScrollView } from 'react-native'
 import { React, useState } from 'react'
 import ListInputElement from '../components/ListInputElement';
 import { insert } from './data/db';
@@ -10,7 +10,7 @@ export default function AddRecipe() {
     });
 
     return (
-        <View style={{marginHorizontal: 5}}>
+        <ScrollView style={{marginHorizontal: 5, marginBottom:5}}>
             <TextInput
                 style={styles.input}
                 onChangeText={(text) => setRecipe({...recipe, name: text})}
@@ -55,7 +55,7 @@ export default function AddRecipe() {
                     }
                 }
             />
-        </View>
+        </ScrollView>
     )
 }
 
