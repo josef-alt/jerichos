@@ -16,6 +16,12 @@ const init = () => {
         db.execSync('CREATE TABLE IF NOT EXISTS steps (id INTEGER PRIMARY KEY NOT NULL, recipe_id INTEGER, step_number INTEGER NOT NULL, description TEXT, FOREIGN KEY (recipe_id) REFERENCES recipe (id));');
         db.execSync('CREATE TABLE IF NOT EXISTS favorites (id INTEGER PRIMARY KEY NOT NULL, recipe_id INTEGER NOT NULL, FOREIGN KEY (recipe_id) REFERENCES recipe (id));');
         isReady = true;
+
+        // prepared statements used for recipe creation
+        global.insertCategory = db.prepareSync('INSERT INTO category (name) VALUES (?);');
+        global.insertRecipe = db.prepareSync('INSERT INTO recipe (category_id, name) VALUES (?, ?);');
+        global.insertIngredient = db.prepareSync('INSERT INTO ingredients (recipe_id, name) VALUES (?, ?)');
+        global.insertStep = db.prepareSync('INSERT INTO steps (recipe_id, step_number, description) VALUES (?, ?, ?)');
     });
 };
 
@@ -26,12 +32,6 @@ const getAll = () => {
         'SELECT recipe.name as recipeName, category.name as categoryName FROM recipe JOIN category ON recipe.category_id = category.id;'
     );
 };
-
-// prepared statements used for recipe creation
-const insertCategory = db.prepareSync('INSERT INTO category (name) VALUES (?);');
-const insertRecipe = db.prepareSync('INSERT INTO recipe (category_id, name) VALUES (?, ?);');
-const insertIngredient = db.prepareSync('INSERT INTO ingredients (recipe_id, name) VALUES (?, ?)');
-const insertStep = db.prepareSync('INSERT INTO steps (recipe_id, step_number, description) VALUES (?, ?, ?)');
 
 // insert single new recipe
 const insert = (recipe) => {
