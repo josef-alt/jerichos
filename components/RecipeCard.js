@@ -7,7 +7,7 @@ export default function RecipeCard(item) {
         <View style={styles.recipeContainer}>
           <Text style={styles.recipeHeader}>{item.name}</Text>
           <Text style={styles.recipeBody}>
-            {item.name} | {item.cooktime.toUpperCase()}
+            {item.recipeName} | {item.categoryName.toUpperCase()}
           </Text>
         </View>
       )
