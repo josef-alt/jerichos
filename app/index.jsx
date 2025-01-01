@@ -15,7 +15,7 @@ export default function Home() {
             <FlatList
                 contentContainerStyle={{gap:5}}
                 data={recipes}
-                keyExtractor={(item) => item.name}
+                keyExtractor={(item) => item.recipeName}
                 renderItem={ ({item}) => <RecipeCard item={item} /> }
             />
             <StatusBar style="auto" />
