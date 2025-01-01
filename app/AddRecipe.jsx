@@ -13,13 +13,13 @@ export default function AddRecipe() {
         <ScrollView style={{marginHorizontal: 5, marginBottom:5}}>
             <TextInput
                 style={styles.input}
-                onChangeText={(text) => setRecipe({...recipe, name: text})}
+                onChangeText={(text) => setRecipe({...recipe, name: text.trim()})}
                 value={recipe.name}
                 placeholder='Recipe Name'
             />
             <TextInput
                 style={styles.input}
-                onChangeText={(text) => setRecipe({...recipe, category: text})}
+                onChangeText={(text) => setRecipe({...recipe, category: text.trim()})}
                 value={recipe.category}
                 placeholder='Category'
             />
