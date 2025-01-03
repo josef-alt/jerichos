@@ -21,6 +21,7 @@ const init = () => {
         global.insertRecipe = db.prepareSync('INSERT INTO recipe (category_id, name, favorite) VALUES (?, ?, ?);');
         global.insertIngredient = db.prepareSync('INSERT INTO ingredients (recipe_id, name) VALUES (?, ?)');
         global.insertStep = db.prepareSync('INSERT INTO steps (recipe_id, step_number, description) VALUES (?, ?, ?)');
+        global.updateFavorite = db.prepareSync('UPDATE recipe SET favorite = ? WHERE id = ?;')
     });
 };
 
@@ -64,4 +65,11 @@ const insert = (recipe) => {
     });
 };
 
-export { init, getAll, insert };
+// set or unset a recipe's favorite flag
+const toggleFavorite = (recipeId, favorite) => {
+    db.withTransactionSync((task) => {
+        console.log(updateFavorite.executeSync(favorite ? 1 : 0, recipeId));
+    });
+};
+
+export { init, getAll, insert, toggleFavorite };
