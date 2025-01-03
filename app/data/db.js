@@ -11,15 +11,14 @@ const init = () => {
     db.withTransactionSync((task) => {
         // create any missing tables
         db.execSync('CREATE TABLE IF NOT EXISTS category (id INTEGER PRIMARY KEY NOT NULL, name TEXT);');
-        db.execSync('CREATE TABLE IF NOT EXISTS recipe (id INTEGER PRIMARY KEY NOT NULL, category_id INTEGER, name TEXT, FOREIGN KEY (category_id) REFERENCES category (id));');
+        db.execSync('CREATE TABLE IF NOT EXISTS recipe (id INTEGER PRIMARY KEY NOT NULL, category_id INTEGER, name TEXT, favorite INTEGER, FOREIGN KEY (category_id) REFERENCES category (id));');
         db.execSync('CREATE TABLE IF NOT EXISTS ingredients (id INTEGER PRIMARY KEY NOT NULL, recipe_id INTEGER, name TEXT, FOREIGN KEY (recipe_id) REFERENCES recipe (id));');
         db.execSync('CREATE TABLE IF NOT EXISTS steps (id INTEGER PRIMARY KEY NOT NULL, recipe_id INTEGER, step_number INTEGER NOT NULL, description TEXT, FOREIGN KEY (recipe_id) REFERENCES recipe (id));');
-        db.execSync('CREATE TABLE IF NOT EXISTS favorites (id INTEGER PRIMARY KEY NOT NULL, recipe_id INTEGER NOT NULL, FOREIGN KEY (recipe_id) REFERENCES recipe (id));');
         isReady = true;
 
         // prepared statements used for recipe creation
         global.insertCategory = db.prepareSync('INSERT INTO category (name) VALUES (?);');
-        global.insertRecipe = db.prepareSync('INSERT INTO recipe (category_id, name) VALUES (?, ?);');
+        global.insertRecipe = db.prepareSync('INSERT INTO recipe (category_id, name, favorite) VALUES (?, ?, ?);');
         global.insertIngredient = db.prepareSync('INSERT INTO ingredients (recipe_id, name) VALUES (?, ?)');
         global.insertStep = db.prepareSync('INSERT INTO steps (recipe_id, step_number, description) VALUES (?, ?, ?)');
     });
@@ -29,7 +28,7 @@ const init = () => {
 const getAll = () => {
     while(!isReady) {}
     return db.getAllSync(
-        'SELECT recipe.name as recipeName, category.name as categoryName FROM recipe JOIN category ON recipe.category_id = category.id;'
+        'SELECT recipe.name as recipeName, category.name as categoryName, favorite as isFavorite FROM recipe JOIN category ON recipe.category_id = category.id;'
     );
 };
 
@@ -52,7 +51,7 @@ const insert = (recipe) => {
         }
 
         // create recipe and get id
-        const recipeId = insertRecipe.executeSync(cat_id, recipe.name).lastInsertRowId;
+        const recipeId = insertRecipe.executeSync(cat_id, recipe.name, 0).lastInsertRowId;
 
         // add steps and ingredients using recipe id
         for(const ingredient of recipe.ingredients) {
