@@ -1,6 +1,9 @@
-import { Text } from 'react-native'
-import React from 'react'
+import { StyleSheet, FlatList, Platform, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
+import { useEffect, useState } from 'react'
 import { getFavorites } from './data/db'
+import RecipeCard from '../components/RecipeCard';
 
 export default function Favorites() {
     // track whether or not database is ready
@@ -47,3 +50,12 @@ export default function Favorites() {
         </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+    mainContainer: {
+      flex: 1,
+      backgroundColor: 'grey',
+      justifyContent: 'center',
+      paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+    }
+  });
