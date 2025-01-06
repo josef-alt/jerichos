@@ -35,7 +35,7 @@ const getAll = () => {
 
 // get list of favorites
 const getFavorites = () => {
-    while(!isReady()) {}
+    while(!isReady) {}
     return db.getAllSync(
         'SELECT recipe.name as recipeName, category.name as categoryName FROM recipe JOIN category ON recipe.category_id = category.id WHERE favorite = 1;'
     );
