@@ -3,23 +3,26 @@ import { StyleSheet, FlatList, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RecipeCard from '../components/RecipeCard';
 import { getAll } from './data/db';
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Text } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function Home() {
     // track whether or not database is ready
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        try {
-            const data = getAll();
-            setRecipes(data);
-            setLoading(false);
-        } catch(err) {
-            console.log('error', err);
-        }
-    }, []);
+    useFocusEffect(
+        React.useCallback(() => {
+            try {
+                const data = getAll();
+                setRecipes(data);
+                setLoading(false);
+            } catch(err) {
+                console.log('error', err);
+            }
+        }, [])
+    );
 
     if(loading) {
         return (
