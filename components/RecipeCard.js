@@ -7,7 +7,7 @@ export default function RecipeCard(item) {
     return (
         <View style={styles.recipeContainer}>
             <View style={styles.headerContainer}>
-                <Text style={styles.recipeHeader}>{item.recipeName}</Text>
+                <Text style={styles.recipeHeader} numberOfLines={1}>{item.recipeName}</Text>
                 <TouchableOpacity style={styles.heartButton}>
                     <FontAwesome name="heart-o" size={24} color={'red'}/>
                 </TouchableOpacity>
