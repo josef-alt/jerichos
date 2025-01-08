@@ -16,7 +16,7 @@ export default function RecipeCard(item) {
                 {item.categoryName.toUpperCase()}
             </Text>
         </View>
-      )
+    )
 }
 
 const styles = StyleSheet.create({
@@ -53,5 +53,4 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: 'gray',
     }
-  });
-  
+});
