@@ -5,9 +5,9 @@ export default function RecipeCard(item) {
 
     return (
         <View style={styles.recipeContainer}>
-          <Text style={styles.recipeHeader}>{item.name}</Text>
+          <Text style={styles.recipeHeader}>{item.recipeName}</Text>
           <Text style={styles.recipeBody}>
-            {item.recipeName} | {item.categoryName.toUpperCase()}
+            {item.categoryName.toUpperCase()}
           </Text>
         </View>
       )
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'lightgrey'
     },
     recipeHeader: {
-      fontSize: 20,
+      fontSize: 30,
       fontWeight: '500'
     },
     recipeBody: {
