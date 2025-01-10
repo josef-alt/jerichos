@@ -61,9 +61,9 @@ export default function AddRecipe() {
 
 const styles = StyleSheet.create({
     input: {
-      height: 40,
-      marginBottom: 42,
-      borderWidth: 1,
-      padding: 10
+        height: 40,
+        marginBottom: 42,
+        borderWidth: 1,
+        padding: 10
     }
-  });
+});

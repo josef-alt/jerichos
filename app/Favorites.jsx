@@ -56,9 +56,9 @@ export default function Favorites() {
 
 const styles = StyleSheet.create({
     mainContainer: {
-      flex: 1,
-      backgroundColor: 'grey',
-      justifyContent: 'center',
-      paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+        flex: 1,
+        backgroundColor: 'grey',
+        justifyContent: 'center',
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
     }
-  });
+});
