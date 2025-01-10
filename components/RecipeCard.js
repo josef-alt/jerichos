@@ -1,10 +1,11 @@
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
+import { toggleFavorite } from '../app/data/db';
 
 export default function RecipeCard(item) {
     item = item.item;
-    const [favorite, setFavorite] = useState(item.isFavorite);
+    const [favorite, setFavorite] = useState(item.isFavorite == '1');
 
     return (
         <View style={styles.recipeContainer}>
@@ -12,7 +13,9 @@ export default function RecipeCard(item) {
                 <Text style={styles.recipeHeader} numberOfLines={1}>{item.recipeName}</Text>
                 <TouchableOpacity style={styles.heartButton}>
                     <FontAwesome name={favorite ? 'heart' : 'heart-o'} size={24} color={'red'} onPress={() => {
-                        setFavorite(!favorite);
+                        const newState = !favorite;
+                        setFavorite(newState);
+                        toggleFavorite(item.recipeId, newState);
                     }}/>
                 </TouchableOpacity>
             </View>
