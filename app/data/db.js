@@ -29,7 +29,7 @@ const init = () => {
 const getAll = () => {
     while(!isReady) {}
     return db.getAllSync(
-        'SELECT recipe.name as recipeName, category.name as categoryName, favorite as isFavorite FROM recipe JOIN category ON recipe.category_id = category.id;'
+        'SELECT recipe.id as recipeId, recipe.name as recipeName, category.name as categoryName, favorite as isFavorite FROM recipe JOIN category ON recipe.category_id = category.id;'
     );
 };
 
@@ -37,7 +37,7 @@ const getAll = () => {
 const getFavorites = () => {
     while(!isReady) {}
     return db.getAllSync(
-        'SELECT recipe.name as recipeName, category.name as categoryName, favorite as isFavorite FROM recipe JOIN category ON recipe.category_id = category.id WHERE favorite = 1;'
+        'SELECT recipe.id as recipeId, recipe.name as recipeName, category.name as categoryName, favorite as isFavorite FROM recipe JOIN category ON recipe.category_id = category.id WHERE favorite = 1;'
     );
 };
 
