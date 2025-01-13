@@ -3,8 +3,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
 import { toggleFavorite } from '../app/data/db';
 
-export default function RecipeCard(item) {
-    item = item.item;
+export default function RecipeCard({item}) {
     const [favorite, setFavorite] = useState(item.isFavorite == '1');
 
     return (
