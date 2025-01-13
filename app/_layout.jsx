@@ -6,7 +6,7 @@ export default function Layout () {
     init();
 
     return (
-        <Tabs>
+        <Tabs backBehavior='history'>
             <Tabs.Screen
                 name="AddRecipe"
                 options={{
