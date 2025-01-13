@@ -10,7 +10,12 @@ export default function RecipeCard({item}) {
     // focus navigation
     const router = useRouter();
     const focus = () => {
-        console.log('nav to ', item.recipeName);
+        router.push({
+            pathname: '/RecipePage',
+            params: {
+                item: JSON.stringify(item)
+            }
+        });
     };
 
     return (
