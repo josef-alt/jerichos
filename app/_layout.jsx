@@ -25,6 +25,12 @@ export default function Layout () {
                     title: "Faves"
                 }}
             />
+            <Tabs.Screen
+                name='RecipePage'
+                options={{
+                    href: null
+                }}
+            />
         </Tabs>
     )
 }
