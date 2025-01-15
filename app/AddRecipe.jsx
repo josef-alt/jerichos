@@ -4,6 +4,8 @@ import ListInputElement from '../components/ListInputElement';
 import { insert } from './data/db';
 
 export default function AddRecipe() {
+    const [name, setName] = useState('');
+    const [category, setCategory] = useState('');
     const [recipe, setRecipe] = useState({
         ingredients: [],
         steps: []
@@ -13,14 +15,14 @@ export default function AddRecipe() {
         <ScrollView style={{marginHorizontal: 5, marginBottom:5}}>
             <TextInput
                 style={styles.input}
-                onChangeText={(text) => setRecipe({...recipe, name: text.trim()})}
-                value={recipe.name}
+                onChangeText={(text) => setName(text)}
+                value={name}
                 placeholder='Recipe Name'
             />
             <TextInput
                 style={styles.input}
-                onChangeText={(text) => setRecipe({...recipe, category: text.trim()})}
-                value={recipe.category}
+                onChangeText={(text) => setCategory(text)}
+                value={category}
                 placeholder='Category'
             />
 
@@ -50,8 +52,14 @@ export default function AddRecipe() {
                 title="Create"
                 onPress={
                     () => {
-                        Alert.alert(`New Recipe ${recipe.name}`);
-                        insert(recipe);
+                        if(name.length == 0) {
+                            Alert.alert('Please enter a recipe title.');
+                        } else {
+                            recipe.name = name.trim();
+                            recipe.category = category.trim();
+                            Alert.alert(`New Recipe ${recipe.name}`);
+                            insert(recipe);
+                        }
                     }
                 }
             />
