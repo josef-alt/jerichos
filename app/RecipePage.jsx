@@ -21,14 +21,14 @@ export default function RecipePage() {
                     <View>
                         <Text style={styles.bodyHeading}>ingredients</Text>{
                         recipe.ingredients.map((ing, idx) => (
-                            <Text>{ing.name}</Text>
+                            <Text key={idx}>{ing.name}</Text>
                         ))}
                     </View>
 
                     <View>
                         <Text style={styles.bodyHeading}>instructions</Text>{
                         recipe.steps.map((step, idx) => (
-                            <Text>{step.description}</Text>
+                            <Text key={idx}>{step.description}</Text>
                         ))}
                     </View>
                 </View>
