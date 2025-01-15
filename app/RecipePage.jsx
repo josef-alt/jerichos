@@ -54,7 +54,12 @@ const styles = StyleSheet.create({
     subheading: {
         fontSize: 30,
         textAlign: 'center',
-        color: '#5885AF'
+        fontWeight: '300',
+        fontStyle: 'italic',
+        color: '#274472',
+        opacity: 0.6,
+        letterSpacing: 2,
+        transform: [{ scaleY: 0.75 }]
     },
     separator: {
         height: 1,
