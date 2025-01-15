@@ -8,8 +8,10 @@ export default function ListInputElement({ title, placeholder, list, setList }) 
     const [newItem, setItem] = useState('');
 
     function addItem() {
-        setList([...list, newItem.trim()]);
-        setItem('');
+        if(newItem.length > 0) {
+            setList([...list, newItem.trim()]);
+            setItem('');
+        }
     }
 
     return (
