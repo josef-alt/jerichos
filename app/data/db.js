@@ -41,6 +41,36 @@ const getFavorites = () => {
     );
 };
 
+// get list of instructions for a specific recipe
+const getSteps = (recipeId) => {
+    return db.getAllSync(
+        'SELECT step_number, description FROM steps WHERE recipe_id = ?;',
+        [recipeId]
+    );
+};
+
+// get list of ingredients for a specific recipe
+const getIngredients = (recipeId) => {
+    return db.getAllSync(
+        'SELECT name FROM ingredients WHERE recipe_id = ?;',
+        [recipeId]
+    );
+};
+
+// get complete recipe
+const getRecipe = (recipeId) => {
+    while(!isReady) {}
+
+    let recipe = db.getFirstSync(
+        'SELECT recipe.id as recipeId, recipe.name as recipeName, category.name as categoryName, favorite as isFavorite FROM recipe JOIN category ON recipe.category_id = category.id WHERE recipe.id = ?;',
+        [recipeId]
+    );
+    recipe.steps = getSteps(recipeId);
+    recipe.ingredients = getIngredients(recipeId);
+
+    return recipe;
+};
+
 // insert single new recipe
 const insert = (recipe) => {
     console.log('\ninserting\n', recipe.name, '\n', recipe.category, '\n', recipe.ingredients, '\n', recipe.steps);
@@ -80,4 +110,4 @@ const toggleFavorite = (recipeId, favorite) => {
     });
 };
 
-export { init, getAll, insert, toggleFavorite, getFavorites };
+export { init, getAll, insert, toggleFavorite, getFavorites, getRecipe };
