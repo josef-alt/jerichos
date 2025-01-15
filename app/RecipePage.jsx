@@ -17,6 +17,8 @@ export default function RecipePage() {
                     <Text style={styles.subheading}>{recipe.categoryName}</Text>
                 </View>
 
+                <View style={styles.separator} />
+
                 <View style={styles.bodyContainer}>
                     <View>
                         <Text style={styles.bodyHeading}>ingredients</Text>{
@@ -53,6 +55,12 @@ const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'center',
         color: '#5885AF'
+    },
+    separator: {
+        height: 1,
+        backgroundColor: 'black',
+        marginHorizontal: 10,
+        marginVertical: 0
     },
     bodyContainer: {
         padding: 10
