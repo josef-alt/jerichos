@@ -62,6 +62,7 @@ export default function AddRecipe() {
                         }
                     }
                 }
+                color={'#41729F'}
             />
         </ScrollView>
     )
