@@ -23,14 +23,20 @@ export default function RecipePage() {
                     <View>
                         <Text style={styles.bodyHeading}>ingredients</Text>{
                         recipe.ingredients.map((ing, idx) => (
-                            <Text key={idx}>{ing.name}</Text>
+                            <View key={idx} style={styles.listElement}>
+                                <Text style={styles.listNumber}>{idx + 1}. </Text>
+                                <Text style={styles.listContent}>{ing.name}</Text>
+                            </View>
                         ))}
                     </View>
 
                     <View>
                         <Text style={styles.bodyHeading}>instructions</Text>{
                         recipe.steps.map((step, idx) => (
-                            <Text key={idx}>{step.description}</Text>
+                            <View key={idx} style={styles.listElement}>
+                                <Text style={styles.listNumber}>{step.step_number}. </Text>
+                                <Text style={styles.listContent}>{step.description}</Text>
+                            </View>
                         ))}
                     </View>
                 </View>
@@ -74,5 +80,19 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 500,
         color: '#41729F'
+    },
+    listElement: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    listNumber: {
+        fontFamily: 'monospace',
+        width: '12.5%',
+        textAlign: 'right',
+        color: '#5885AF'
+    },
+    listContent: {
+        marginRight: '10%',
+        color: '#5885AF'
     }
 });
