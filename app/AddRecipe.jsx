@@ -70,8 +70,7 @@ export default function AddRecipe() {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        marginHorizontal: 5,
-        marginBottom:5,
+        padding: 5,
         backgroundColor: '#C3E0E5'
     },
     input: {
