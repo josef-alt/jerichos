@@ -12,7 +12,7 @@ export default function AddRecipe() {
     });
 
     return (
-        <ScrollView style={{marginHorizontal: 5, marginBottom:5}}>
+        <ScrollView style={styles.mainContainer}>
             <TextInput
                 style={styles.input}
                 onChangeText={(text) => setName(text)}
@@ -69,6 +69,11 @@ export default function AddRecipe() {
 }
 
 const styles = StyleSheet.create({
+    mainContainer: {
+        marginHorizontal: 5,
+        marginBottom:5,
+        backgroundColor: '#C3E0E5'
+    },
     input: {
         height: 40,
         marginBottom: 42,

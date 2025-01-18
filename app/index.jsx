@@ -49,7 +49,7 @@ export default function Home() {
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
-        backgroundColor: 'grey',
+        backgroundColor: '#C3E0E5',
         justifyContent: 'center',
         paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
     }
