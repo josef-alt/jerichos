@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { toggleFavorite } from '../app/data/db';
 import { useRouter } from 'expo-router';
 
+// TODO inherit styles
 export default function RecipeCard({item}) {
     const [favorite, setFavorite] = useState(item.isFavorite == '1');
 
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
         padding: 10,
         gap: 2,
         borderRadius: 10,
-        backgroundColor: 'lightgrey',
+        backgroundColor: '#C3E0E5',
         shadowColor: '#000',
         shadowOffset: { 
             width: 0,
@@ -63,6 +64,7 @@ const styles = StyleSheet.create({
     recipeHeader: {
         fontSize: 30,
         fontWeight: '500',
+        color: '#274472',
         flex: 1,
         marginRight: 10
     },
@@ -71,6 +73,6 @@ const styles = StyleSheet.create({
     },
     recipeBody: {
         fontSize: 14,
-        color: 'gray',
+        color: '#274472',
     }
 });
