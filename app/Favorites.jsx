@@ -57,7 +57,7 @@ export default function Favorites() {
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
-        backgroundColor: '#C3E0E5',
+        backgroundColor: '#274472',
         justifyContent: 'center',
         paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
     }
