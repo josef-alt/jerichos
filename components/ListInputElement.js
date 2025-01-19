@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         paddingHorizontal: 10,
         height: 40,
-        borderRadius: 3
+        borderRadius: 3,
+        color: colors.midnight
     },
     buttonContainer: {
         width: 40,

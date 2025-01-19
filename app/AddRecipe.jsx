@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
         marginBottom: 42,
         borderWidth: 1,
         padding: 10,
+        color: colors.midnight,
         backgroundColor: colors.babyBlue,
         borderRadius: 3
     },
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     buttonText: {
-        color: 'white',
+        color: colors.babyBlue,
         textAlign: 'center'
     }
 });
