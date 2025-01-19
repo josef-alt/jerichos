@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Text, TextInput, Button, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { colors } from '../app/styles';
 
 // title should be displayed at the top of the element
 // placeholder should be the 'hint' inside the text box
@@ -16,12 +17,14 @@ export default function ListInputElement({ title, placeholder, list, setList }) 
 
     return (
         <View style={styles.elementContainer}>
-            <Text>{title}</Text>
+            <Text style={styles.inputLabel}>{title}</Text>
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.input}
                     value={newItem}
                     placeholder={placeholder}
+                    backgroundColor={colors.babyBlue}
+                    placeholderTextColor={colors.blueGrey}
                     onChangeText={setItem}
                 />
                 <TouchableOpacity style={styles.buttonContainer} onPress={addItem}>
@@ -31,7 +34,7 @@ export default function ListInputElement({ title, placeholder, list, setList }) 
             
             <View>
                 {list.map((item, index) => (
-                    <Text key={index}>
+                    <Text style={styles.listElement} key={index}>
                         {item}
                     </Text>
                 ))}
@@ -40,13 +43,15 @@ export default function ListInputElement({ title, placeholder, list, setList }) 
     )
 }
 
-
 const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         gap: 5,
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: 'center'
+    },
+    inputLabel: {
+        color: colors.babyBlue
     },
     input: {
         borderWidth: 1,
@@ -60,14 +65,17 @@ const styles = StyleSheet.create({
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#5885AF',
+        backgroundColor: colors.blueGrey,
         borderRadius: 3
     },
     buttonText: {
         fontSize: 20,
-        color: 'white'
+        color: colors.babyBlue
     },
     elementContainer: {
         marginBottom: 20
+    },
+    listElement: {
+        color: colors.babyBlue
     }
 });

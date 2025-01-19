@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { getFavorites } from './data/db'
 import RecipeCard from '../components/RecipeCard';
 import { useFocusEffect } from '@react-navigation/native';
+import { colors } from './styles';
 
 export default function Favorites() {
     // track whether or not database is ready
@@ -57,7 +58,7 @@ export default function Favorites() {
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
-        backgroundColor: '#274472',
+        backgroundColor: colors.darkBlue,
         justifyContent: 'center',
         paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
     }
