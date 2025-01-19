@@ -2,6 +2,7 @@ import { TextInput, StyleSheet, Button, Alert, ScrollView } from 'react-native'
 import { React, useState } from 'react'
 import ListInputElement from '../components/ListInputElement';
 import { insert } from './data/db';
+import { colors } from './styles';
 
 export default function AddRecipe() {
     const [name, setName] = useState('');
@@ -18,12 +19,14 @@ export default function AddRecipe() {
                 onChangeText={(text) => setName(text)}
                 value={name}
                 placeholder='Recipe Name'
+                placeholderTextColor={colors.blueGrey}
             />
             <TextInput
                 style={styles.input}
                 onChangeText={(text) => setCategory(text)}
                 value={category}
                 placeholder='Category'
+                placeholderTextColor={colors.blueGrey}
             />
 
             <ListInputElement
@@ -62,7 +65,7 @@ export default function AddRecipe() {
                         }
                     }
                 }
-                color={'#41729F'}
+                color={colors.blueGrey}
             />
         </ScrollView>
     )
@@ -71,12 +74,13 @@ export default function AddRecipe() {
 const styles = StyleSheet.create({
     mainContainer: {
         padding: 5,
-        backgroundColor: '#C3E0E5'
+        backgroundColor: colors.darkBlue
     },
     input: {
         height: 40,
         marginBottom: 42,
         borderWidth: 1,
-        padding: 10
+        padding: 10,
+        backgroundColor: colors.babyBlue
     }
 });
