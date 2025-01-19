@@ -1,4 +1,4 @@
-import { TextInput, StyleSheet, Button, Alert, ScrollView } from 'react-native'
+import { TextInput, StyleSheet, Text, Alert, ScrollView, TouchableOpacity } from 'react-native'
 import { React, useState } from 'react'
 import ListInputElement from '../components/ListInputElement';
 import { insert } from './data/db';
@@ -51,8 +51,7 @@ export default function AddRecipe() {
                 title='Create Instructions'
             />
 
-            <Button
-                title="Create"
+            <TouchableOpacity
                 onPress={
                     () => {
                         if(name.length == 0) {
@@ -65,8 +64,10 @@ export default function AddRecipe() {
                         }
                     }
                 }
-                color={colors.blueGrey}
-            />
+                style={styles.buttonContainer}
+            >
+                <Text style={styles.buttonText}>CREATE</Text>
+            </TouchableOpacity>
         </ScrollView>
     )
 }
@@ -83,5 +84,15 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: colors.babyBlue,
         borderRadius: 3
+    },
+    buttonContainer: {
+        backgroundColor: colors.blueGrey,
+        height: 40,
+        borderRadius: 3,
+        justifyContent: 'center'
+    },
+    buttonText: {
+        color: 'white',
+        textAlign: 'center'
     }
 });
