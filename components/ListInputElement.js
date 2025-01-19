@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
         color: colors.babyBlue
     },
     input: {
-        borderWidth: 1,
         flexBasis: 0,
         flexGrow: 1,
         paddingHorizontal: 10,
-        height: 40
+        height: 40,
+        borderRadius: 3
     },
     buttonContainer: {
         width: 40,

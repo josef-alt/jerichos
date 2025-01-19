@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
         marginBottom: 42,
         borderWidth: 1,
         padding: 10,
-        backgroundColor: colors.babyBlue
+        backgroundColor: colors.babyBlue,
+        borderRadius: 3
     }
 });
